@@ -85,6 +85,10 @@ nav h1 {
     background-color: rgb(180, 180, 180);
 }
 
+.project-list.active {
+    background-color: rgb(150, 150, 150);
+}
+
 .add-project {
     height: 40px;
     border: none;
