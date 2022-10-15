@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Custom Properties */
+:root {
+    --main-color: rgb(130, 130, 255);
+    --nav-color: rgb(230, 230, 230);
+    --header-word-color: rgb(255, 255, 255);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Start */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Start */
+
+header {
+    flex: 0 0 100px;
+    background-color: var(--main-color);
+    color: var(--header-word-color);
+    font-weight: bold;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 25px;
+}
+
+header img {
+    width: 75px;
+    height: auto;
+}
+
+header span {
+    flex: 0 0 auto;
+}
+
+/* Main Body Start */
+
+.content {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+/* Navigation Bar Start */
+
+nav {
+    background: var(--nav-color);
+    flex: 0 0 200px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+}
+
+nav h1 {
+    padding: 10px 5px;
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-list {
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: none;
+    margin: 10px 0;
+}
+
+.project-list:hover {
+    cursor: pointer;
+    background-color: rgb(180, 180, 180);
+}
+
+.add-project {
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: none;
+    margin: 10px 0;
+}
+
+.add-project:hover {
+    cursor: pointer;
+    background-color: rgb(180, 180, 180);
+}
+
+/* Tasks Start */
+
+main {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+main h1 {
+    padding: 30px 50px;
+}
+
+.tasks {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-list {
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: none;
+    margin: 10px 0;
+}
+
+.task-list:hover {
+    cursor: pointer;
+    background-color: rgb(180, 180, 180);
+}
+
+.add-task {
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: none;
+    margin: 10px 0;
+}
+
+.add-task:hover {
+    cursor: pointer;
+    background-color: rgb(180, 180, 180);
+}
+
+/* Footer Start */
+
+footer {
+    background-color: var(--main-color);
+    flex: 0 0 50px;
+    color: var(--header-word-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer span {
+    flex: 0 0 auto;
+}
+
+
+/* mobile test
+@media (max-width:600px) {
+    .content {
+        flex-direction: column;
+    }
+
+    nav {
+        flex: 0 0 50px;
+    }
+} */
