@@ -123,11 +123,18 @@ main h1 {
 }
 
 .task-list {
-    height: 40px;
     border: none;
     border-radius: 5px;
+    padding: 10px;
     background: none;
     margin: 10px 0;
+    display: grid;
+    grid-template-columns: 1fr 6fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr;
+}
+
+.task-list .description {
+    grid-column: 1/5;
 }
 
 .task-list:hover {

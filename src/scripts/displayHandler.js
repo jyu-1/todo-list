@@ -38,7 +38,33 @@ export function listTasks(array) {
     array.forEach((element) => {
         const taskList = document.createElement("div");
         taskList.classList.add("task-list");
-        taskList.innerText = element.title;
+
+        const priority = document.createElement("div");
+        priority.classList.add("priority");
+        priority.innerText = element.priority;
+
+        const title = document.createElement("div");
+        title.classList.add("title");
+        title.innerText = element.title;
+
+        const dued = document.createElement("div");
+        dued.classList.add("dued");
+        dued.innerText = element.dueDate;
+
+        const checklist = document.createElement("div");
+        checklist.classList.add("checklist");
+        checklist.innerText = element.checklist;
+
+        const description = document.createElement("div");
+        description.classList.add("description");
+        description.innerText = element.description;
+
+        taskList.appendChild(priority);
+        taskList.appendChild(title);
+        taskList.appendChild(dued);
+        taskList.appendChild(checklist);
+        taskList.appendChild(description);
+
         container.appendChild(taskList);
     });
 }
