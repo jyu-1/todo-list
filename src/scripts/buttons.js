@@ -16,7 +16,7 @@ export function defaultPage() {
 
     const addTask = document.querySelector(".add-task");
     addTask.addEventListener("click", () => {
-        projects[currentView].addList("title", "description", "dueDate", "priority", "checklist");
+        projects[currentView].addList();
         listTasks(projects[currentView].list);
     });
 }
