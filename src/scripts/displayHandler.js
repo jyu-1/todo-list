@@ -2,12 +2,12 @@ export let currentView = 0;
 
 export function listProjects(array) {
     const container = document.querySelector(".projects");
-    container.innerText = "";
+    container.textContent = "";
 
     array.forEach((element, index) => {
         const navList = document.createElement("button");
         navList.classList.add("project-list");
-        navList.innerText = element.name;
+        navList.textContent = element.name;
         navList.addEventListener("click", () => {
             const allNav = document.querySelectorAll(".project-list");
 
@@ -34,30 +34,30 @@ export function listProjects(array) {
 
 export function listTasks(array) {
     const container = document.querySelector(".tasks");
-    container.innerText = "";
+    container.textContent = "";
     array.forEach((element) => {
         const taskList = document.createElement("div");
         taskList.classList.add("task-list");
 
         const priority = document.createElement("div");
         priority.classList.add("priority");
-        priority.innerText = element.priority;
+        priority.textContent = element.priority;
 
         const title = document.createElement("div");
         title.classList.add("title");
-        title.innerText = element.title;
+        title.textContent = element.title;
 
         const dued = document.createElement("div");
         dued.classList.add("dued");
-        dued.innerText = element.dueDate;
+        dued.textContent = element.dueDate;
 
         const checklist = document.createElement("div");
         checklist.classList.add("checklist");
-        checklist.innerText = element.checklist;
+        checklist.textContent = element.checklist;
 
         const description = document.createElement("div");
         description.classList.add("description");
-        description.innerText = element.description;
+        description.textContent = element.description;
 
         taskList.appendChild(priority);
         taskList.appendChild(title);

@@ -7,16 +7,53 @@ export function defaultPage() {
     projects.push(defaultProject);
     listProjects(projects);
 
-    const addProject = document.querySelector(".add-project");
-    addProject.addEventListener("click", () => {
-        const newProject = Projects("test");
-        projects.push(newProject);
-        listProjects(projects);
-    });
+    addProject();
 
     const addTask = document.querySelector(".add-task");
     addTask.addEventListener("click", () => {
         projects[currentView].addList();
         listTasks(projects[currentView].list);
+    });
+}
+
+function addProject() {
+    const addProject = document.querySelector(".add-project");
+    addProject.addEventListener("click", () => {
+        addProject.style.display = "none";
+        const parent = document.querySelector(".nav");
+
+        const form = document.createElement("form");
+        form.classList.add("project-form");
+        const input = document.createElement("input");
+        input.classList.add("project-input");
+        const add = document.createElement("button");
+        add.classList.add("add-button");
+        const cancel = document.createElement("button");
+        cancel.classList.add("cancel-project");
+
+        add.addEventListener("click", (event) => {
+            event.preventDefault();
+            const newProject = Projects("test");
+            projects.push(newProject);
+            listProjects(projects);
+            form.remove();
+            addProject.style.display = "block";
+        })
+
+        cancel.addEventListener("click", ()=>{
+            form.remove();
+            addProject.style.display = "block";
+        })
+
+        add.textContent = "Add";
+        cancel.textContent = "Cancel";
+
+        form.appendChild(input);
+        form.appendChild(add);
+        form.appendChild(cancel);
+
+        parent.insertBefore(form, addProject);
+
+
     });
 }
