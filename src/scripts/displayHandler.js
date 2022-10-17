@@ -1,3 +1,5 @@
+import { projects } from "./storage";
+
 export let currentView = 0;
 
 export function listProjects(array) {
@@ -8,6 +10,7 @@ export function listProjects(array) {
         const navList = document.createElement("button");
         navList.classList.add("project-list");
         navList.textContent = element.name;
+
         navList.addEventListener("click", () => {
             const allNav = document.querySelectorAll(".project-list");
 
@@ -24,20 +27,49 @@ export function listProjects(array) {
 }
 
 export function selectNewProject(array) {
-    const allNav = document.querySelectorAll(".project-list");
-    allNav.forEach((element) => {
-        element.classList.remove("active");
-    })
-    currentView = array.length - 1;
-    allNav[currentView].classList.add("active");
-    listTasks(array[currentView].list, array[currentView]);
+    const container = document.querySelector(".tasks");
+    const addButton = document.querySelector(".add-task");
+
+    if (projects.length === 0) {
+        container.textContent = "";
+        addButton.disabled = true;
+    }
+    else {
+        addButton.disabled = false;
+        const allNav = document.querySelectorAll(".project-list");
+        allNav.forEach((element) => {
+            element.classList.remove("active");
+        })
+        currentView = array.length - 1;
+        allNav[currentView].classList.add("active");
+        listTasks(array[currentView].list, array[currentView]);
+    }
 }
 
 export function listTasks(array, parentArray) {
     const container = document.querySelector(".tasks");
     container.textContent = "";
 
-    console.log(parentArray.name);
+
+    const projectPanel = document.createElement("div");
+    projectPanel.classList.add("project-panel");
+
+    const projectName = document.createElement("span");
+    const projectDelete = document.createElement("button");
+
+    projectDelete.addEventListener("click", () => {
+        projects.splice(projects.indexOf(parentArray), 1);
+        listProjects(projects);
+        selectNewProject(projects);
+    })
+
+    projectName.textContent = parentArray.name;
+    projectDelete.textContent = "Delete Project";
+
+    projectPanel.appendChild(projectName);
+    projectPanel.appendChild(projectDelete);
+
+    container.appendChild(projectPanel);
 
     array.forEach((element, index) => {
         const taskList = document.createElement("div");
@@ -71,4 +103,5 @@ export function listTasks(array, parentArray) {
             taskList.remove();
         });
     });
+
 }

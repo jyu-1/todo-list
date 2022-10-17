@@ -103,3 +103,7 @@ function addTask() {
         }
     }
 }
+
+function deleteProject (){
+    
+}
