@@ -50,11 +50,10 @@ export function listTasks(array, parentArray) {
     const container = document.querySelector(".tasks");
     container.textContent = "";
 
-
     const projectPanel = document.createElement("div");
     projectPanel.classList.add("project-panel");
 
-    const projectName = document.createElement("span");
+    const projectName = document.createElement("p");
     const projectDelete = document.createElement("button");
 
     projectDelete.addEventListener("click", () => {
@@ -63,7 +62,7 @@ export function listTasks(array, parentArray) {
         selectNewProject(projects);
     })
 
-    projectName.textContent = parentArray.name;
+    projectName.textContent = "Project: " + parentArray.name;
     projectDelete.textContent = "Delete Project";
 
     projectPanel.appendChild(projectName);

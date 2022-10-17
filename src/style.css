@@ -170,7 +170,6 @@ nav h1 {
     background-color: rgb(116, 204, 255);
 }
 
-
 .exit-task:hover {
     cursor: pointer;
     background-color: #fcb3b1;
@@ -178,17 +177,40 @@ nav h1 {
 
 /* Tasks Start */
 
+.project-panel {
+    display: flex;
+    align-items: center;
+}
+
+.project-panel > p {
+    flex: 1;
+    font-size: 20px;
+}
+
+.project-panel button {
+    flex: 0 0 100px;
+    background-color: #ff9b99;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+}
+
+.project-panel button:hover {
+    cursor: pointer;
+    background-color: #fcb3b1;
+}
+
 main {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    padding: 20px 10px;
+    padding: 20px;
     max-width: 800px;
     margin: 0 auto;
 }
 
 main h1 {
-    padding: 30px 10px;
+    padding: 30px 0px;
 }
 
 .tasks {
