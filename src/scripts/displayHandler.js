@@ -74,6 +74,23 @@ export function listTasks(array, parentArray) {
         const taskList = document.createElement("div");
         taskList.classList.add("task-list");
 
+        switch (element.priority) {
+            case "1":
+                taskList.style.border = "2px solid red";
+                break;
+            case "2":
+                taskList.style.border = "2px solid orange";
+                break;
+            case "3":
+                taskList.style.border = "2px solid yellow";
+                break;
+            case "4":
+                taskList.style.border = "2px solid green";
+                break;
+            default:
+                taskList.style.border = "2px solid black";
+        }
+
         const title = document.createElement("div");
         title.classList.add("title");
         title.textContent = element.title;
