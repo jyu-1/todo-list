@@ -64,31 +64,32 @@ function addTask() {
     const modal = document.querySelector(".modal");
     addTask.addEventListener("click", () => {
         modal.style.display = "block";
+    });
 
-        const add = document.querySelector(".task-button");
-        const cancel = document.querySelector(".exit-task");
+    const add = document.querySelector(".task-button");
+    const cancel = document.querySelector(".exit-task");
 
-        const taskTitle = document.querySelector(".task-title");
-        const taskDescription = document.querySelector(".task-description");
-        const taskDate = document.querySelector(".task-date");
-        const taskPriority = document.querySelector(".task-priority");
+    const taskTitle = document.querySelector(".task-title");
+    const taskDescription = document.querySelector(".task-description");
+    const taskDate = document.querySelector(".task-date");
+    const taskPriority = document.querySelector(".task-priority");
 
-        const form = document.querySelector(".task-form");
+    const form = document.querySelector(".task-form");
 
-        add.addEventListener("click", (event) => {
+    add.addEventListener("click", (event) => {
+        if (taskTitle.reportValidity() === true) {
             event.preventDefault();
             modal.style.display = "none";
-            console.log("test");
             projects[currentView].addList(taskTitle.value, taskDescription.value, taskDate.value, taskPriority.value);
             listTasks(projects[currentView].list);
             form.reset();
-        })
+        }
+    });
 
-        cancel.addEventListener("click", (event) => {
-            event.preventDefault();
-            form.reset();
-            modal.style.display = "none";
-        })
+    cancel.addEventListener("click", (event) => {
+        event.preventDefault();
+        form.reset();
+        modal.style.display = "none";
     });
 
     window.onclick = (event) => {
