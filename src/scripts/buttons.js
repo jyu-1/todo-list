@@ -1,11 +1,12 @@
 import { Projects, projects } from "./storage";
-import { listProjects, listTasks, currentView } from './displayHandler';
+import { listProjects, listTasks, selectNewProject, currentView } from './displayHandler';
 
 export function defaultPage() {
 
     const defaultProject = Projects("Default");
     projects.push(defaultProject);
     listProjects(projects);
+    selectNewProject(projects);
 
     addProject();
     addTask();
@@ -39,6 +40,7 @@ function addProject() {
                 const newProject = Projects(input.value);
                 projects.push(newProject);
                 listProjects(projects);
+                selectNewProject(projects);
                 form.remove();
                 addProject.style.display = "block";
             }

@@ -19,22 +19,26 @@ export function listProjects(array) {
             navList.classList.add("active");
         });
 
-        const allNav = document.querySelectorAll(".project-list");
-
-        allNav.forEach((element) => {
-            element.classList.remove("active");
-        });
-        listTasks(element.list, array[currentView]);
-        currentView = index;
-        navList.classList.add("active");
-
         container.appendChild(navList);
     });
+}
+
+export function selectNewProject(array) {
+    const allNav = document.querySelectorAll(".project-list");
+    allNav.forEach((element) => {
+        element.classList.remove("active");
+    })
+    currentView = array.length - 1;
+    allNav[currentView].classList.add("active");
+    listTasks(array[currentView].list, array[currentView]);
 }
 
 export function listTasks(array, parentArray) {
     const container = document.querySelector(".tasks");
     container.textContent = "";
+
+    console.log(parentArray.name);
+
     array.forEach((element, index) => {
         const taskList = document.createElement("div");
         taskList.classList.add("task-list");
@@ -62,7 +66,7 @@ export function listTasks(array, parentArray) {
 
         container.appendChild(taskList);
 
-        checklist.addEventListener("click", () =>{
+        checklist.addEventListener("click", () => {
             parentArray.removeList(index)
             taskList.remove();
         });
