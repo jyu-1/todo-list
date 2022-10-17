@@ -104,6 +104,78 @@ nav h1 {
     background-color: rgb(112, 203, 255);
 }
 
+.project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 100%;
+}
+
+.add-button {
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: none;
+    background-color: var(--add-color);
+}
+
+.add-button:hover {
+    cursor: pointer;
+    background-color: rgb(116, 204, 255);
+}
+
+.cancel-project {
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: none;
+    background-color: #ff9b99;
+}
+
+.cancel-project:hover {
+    cursor: pointer;
+    background-color: #fcb3b1;
+}
+
+.project-input {
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+}
+
+.task-button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.task-button {
+    flex: 1;
+    background-color: var(--add-color);
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+}
+
+.exit-task {
+    flex: 1;
+    background-color: #ff9b99;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+}
+
+.task-button:hover {
+    cursor: pointer;
+    background-color: rgb(116, 204, 255);
+}
+
+
+.exit-task:hover {
+    cursor: pointer;
+    background-color: #fcb3b1;
+}
+
 /* Tasks Start */
 
 main {
@@ -222,7 +294,7 @@ footer span {
     gap: 10px;
 }
 
-.task-form > * {
+.task-form>* {
     font-family: monospace;
     font-size: 13px;
     text-align: center;
@@ -236,7 +308,7 @@ footer span {
     resize: none;
 }
 
-.task-form p{
+.task-form p {
     font-size: 20px;
     font-weight: bold;
 }

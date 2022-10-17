@@ -25,6 +25,7 @@ function addProject() {
         input.minLength = 1;
         input.maxLength = 12;
         input.required = true;
+        input.placeholder = "Project Name";
 
         const add = document.createElement("button");
         add.classList.add("add-button");
