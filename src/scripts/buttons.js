@@ -26,21 +26,29 @@ function addProject() {
         form.classList.add("project-form");
         const input = document.createElement("input");
         input.classList.add("project-input");
+        input.type = "text";
+        input.minLength = 1;
+        input.maxLength = 12;
+        input.required = true;
+
         const add = document.createElement("button");
         add.classList.add("add-button");
+        add.type = "submit";
         const cancel = document.createElement("button");
         cancel.classList.add("cancel-project");
 
         add.addEventListener("click", (event) => {
             event.preventDefault();
-            const newProject = Projects("test");
-            projects.push(newProject);
-            listProjects(projects);
-            form.remove();
-            addProject.style.display = "block";
+            if (input.reportValidity() === true) {
+                const newProject = Projects(input.value);
+                projects.push(newProject);
+                listProjects(projects);
+                form.remove();
+                addProject.style.display = "block";
+            }
         })
 
-        cancel.addEventListener("click", ()=>{
+        cancel.addEventListener("click", () => {
             form.remove();
             addProject.style.display = "block";
         })
@@ -53,7 +61,5 @@ function addProject() {
         form.appendChild(cancel);
 
         parent.insertBefore(form, addProject);
-
-
     });
 }
