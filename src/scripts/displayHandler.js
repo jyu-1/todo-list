@@ -1,5 +1,3 @@
-import { projects } from "./storage";
-
 export let currentView = 0;
 
 export function listProjects(array) {
@@ -16,8 +14,8 @@ export function listProjects(array) {
             allNav.forEach((element) => {
                 element.classList.remove("active");
             });
-            listTasks(element.list);
             currentView = index;
+            listTasks(element.list, array[currentView]);
             navList.classList.add("active");
         });
 
@@ -26,7 +24,7 @@ export function listProjects(array) {
         allNav.forEach((element) => {
             element.classList.remove("active");
         });
-        listTasks(element.list);
+        listTasks(element.list, array[currentView]);
         currentView = index;
         navList.classList.add("active");
 
@@ -34,10 +32,10 @@ export function listProjects(array) {
     });
 }
 
-export function listTasks(array) {
+export function listTasks(array, parentArray) {
     const container = document.querySelector(".tasks");
     container.textContent = "";
-    array.forEach((element) => {
+    array.forEach((element, index) => {
         const taskList = document.createElement("div");
         taskList.classList.add("task-list");
 
@@ -63,5 +61,10 @@ export function listTasks(array) {
         taskList.appendChild(description);
 
         container.appendChild(taskList);
+
+        checklist.addEventListener("click", () =>{
+            parentArray.removeList(index)
+            taskList.remove();
+        });
     });
 }

@@ -8,8 +8,10 @@ export const Projects = (name) => {
         list.push(newItem);
     };
 
-    const removeList = () => {
-        list.splice(0, 1);
+    const removeList = (index) => {
+        console.log(list[index]);
+        list.splice(index, 1);
+        console.log(list[index]);
     }
     return { name, list, addList, removeList };
 };

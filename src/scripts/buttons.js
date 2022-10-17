@@ -82,7 +82,7 @@ function addTask() {
             event.preventDefault();
             modal.style.display = "none";
             projects[currentView].addList(taskTitle.value, taskDescription.value, taskDate.value, taskPriority.value);
-            listTasks(projects[currentView].list);
+            listTasks(projects[currentView].list, projects[currentView]);
             form.reset();
         }
     });
