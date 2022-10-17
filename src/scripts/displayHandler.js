@@ -41,10 +41,6 @@ export function listTasks(array) {
         const taskList = document.createElement("div");
         taskList.classList.add("task-list");
 
-        const priority = document.createElement("div");
-        priority.classList.add("priority");
-        priority.textContent = element.priority;
-
         const title = document.createElement("div");
         title.classList.add("title");
         title.textContent = element.title;
@@ -53,15 +49,14 @@ export function listTasks(array) {
         dued.classList.add("dued");
         dued.textContent = element.dueDate;
 
-        const checklist = document.createElement("div");
+        const checklist = document.createElement("button");
         checklist.classList.add("checklist");
-        checklist.textContent = element.checklist;
+        checklist.textContent = "Complete";
 
         const description = document.createElement("div");
         description.classList.add("description");
         description.textContent = element.description;
 
-        taskList.appendChild(priority);
         taskList.appendChild(title);
         taskList.appendChild(dued);
         taskList.appendChild(checklist);
