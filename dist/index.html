@@ -30,6 +30,27 @@
         </main>
     </div>
 
+    <div class="modal">
+        <div class="modal-content">
+            <form class="task-form">
+                <p>Add Task</p>
+                <input type="text" class="task-title" minlength="1" maxlength="20" placeholder="Name" required>
+                <textarea class="task-description" placeholder="Description (optional)" maxlength="200"></textarea>
+                <input type="date" class="task-date" value="2022-01-01">
+                <select class="task-priority">
+                    <option value="1">Very Urgent</option>
+                    <option value="2">Urgent</option>
+                    <option value="3">Normal</option>
+                    <option value="4">Not Urgent</option>
+                </select>
+                <div class="task-button-container">
+                    <button type="submit" class="task-button">Add Task</button>
+                    <button class="exit-task" formnovalidate>Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <footer>
         <span>Copyright © 2022 jyu-1</span>
     </footer>

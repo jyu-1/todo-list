@@ -15,17 +15,17 @@ export const Projects = (name) => {
 };
 
 const List = (title, description, dueDate, priority) => {
-if (title === undefined){
-    title = "default";
-}
-if(description === undefined){
-    description = "describe this";
-}
-if(dueDate === undefined){
-    dueDate = "2022";
-}
-if(priority === undefined){
-    priority = "1";
-}
-    return { title, description, dueDate, priority};
+    if (title === undefined) {
+        title = "default";
+    }
+    if (description === undefined) {
+        description = "";
+    }
+    if (dueDate === undefined) {
+        dueDate = "2022";
+    }
+    if (priority === undefined) {
+        priority = "1";
+    }
+    return { title, description, dueDate, priority };
 };

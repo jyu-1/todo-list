@@ -1,3 +1,5 @@
+import { projects } from "./storage";
+
 export let currentView = 0;
 
 export function listProjects(array) {
@@ -34,7 +36,6 @@ export function listProjects(array) {
 
 export function listTasks(array) {
     const container = document.querySelector(".tasks");
-    container.textContent = "";
     array.forEach((element) => {
         const taskList = document.createElement("div");
         taskList.classList.add("task-list");
