@@ -6,24 +6,26 @@ export function listProjects(array) {
     const container = document.querySelector(".projects");
     container.textContent = "";
 
-    array.forEach((element, index) => {
-        const navList = document.createElement("button");
-        navList.classList.add("project-list");
-        navList.textContent = element.name;
+    if (array[0] !== undefined) {
+        array.forEach((element, index) => {
+            const navList = document.createElement("button");
+            navList.classList.add("project-list");
+            navList.textContent = element.name;
 
-        navList.addEventListener("click", () => {
-            const allNav = document.querySelectorAll(".project-list");
+            navList.addEventListener("click", () => {
+                const allNav = document.querySelectorAll(".project-list");
 
-            allNav.forEach((element) => {
-                element.classList.remove("active");
+                allNav.forEach((element) => {
+                    element.classList.remove("active");
+                });
+                currentView = index;
+                listTasks(element.list, array[currentView]);
+                navList.classList.add("active");
             });
-            currentView = index;
-            listTasks(element.list, array[currentView]);
-            navList.classList.add("active");
-        });
 
-        container.appendChild(navList);
-    });
+            container.appendChild(navList);
+        });
+    }
 }
 
 export function selectNewProject(array) {
@@ -37,11 +39,13 @@ export function selectNewProject(array) {
     else {
         addButton.disabled = false;
         const allNav = document.querySelectorAll(".project-list");
-        allNav.forEach((element) => {
-            element.classList.remove("active");
-        })
-        currentView = array.length - 1;
-        allNav[currentView].classList.add("active");
+        if (allNav[0] !== undefined) {
+            allNav.forEach((element) => {
+                element.classList.remove("active");
+            })
+            currentView = array.length - 1;
+            allNav[currentView].classList.add("active");
+        }
         listTasks(array[currentView].list, array[currentView]);
     }
 }
@@ -58,6 +62,7 @@ export function listTasks(array, parentArray) {
 
     projectDelete.addEventListener("click", () => {
         projects.splice(projects.indexOf(parentArray), 1);
+        localStorage.setItem("projects", JSON.stringify(projects));
         listProjects(projects);
         selectNewProject(projects);
     })
@@ -70,54 +75,55 @@ export function listTasks(array, parentArray) {
 
     container.appendChild(projectPanel);
 
-    array.forEach((element, index) => {
-        const taskList = document.createElement("div");
-        taskList.classList.add("task-list");
+    if (array !== undefined) {
+        array.forEach((element, index) => {
+            const taskList = document.createElement("div");
+            taskList.classList.add("task-list");
 
-        switch (element.priority) {
-            case "1":
-                taskList.style.border = "2px solid red";
-                break;
-            case "2":
-                taskList.style.border = "2px solid orange";
-                break;
-            case "3":
-                taskList.style.border = "2px solid yellow";
-                break;
-            case "4":
-                taskList.style.border = "2px solid green";
-                break;
-            default:
-                taskList.style.border = "2px solid black";
-        }
+            switch (element.priority) {
+                case "1":
+                    taskList.style.border = "2px solid red";
+                    break;
+                case "2":
+                    taskList.style.border = "2px solid orange";
+                    break;
+                case "3":
+                    taskList.style.border = "2px solid yellow";
+                    break;
+                case "4":
+                    taskList.style.border = "2px solid green";
+                    break;
+                default:
+                    taskList.style.border = "2px solid black";
+            }
 
-        const title = document.createElement("div");
-        title.classList.add("title");
-        title.textContent = element.title;
+            const title = document.createElement("div");
+            title.classList.add("title");
+            title.textContent = element.title;
 
-        const dued = document.createElement("div");
-        dued.classList.add("dued");
-        dued.textContent = element.dueDate;
+            const dued = document.createElement("div");
+            dued.classList.add("dued");
+            dued.textContent = element.dueDate;
 
-        const checklist = document.createElement("button");
-        checklist.classList.add("checklist");
-        checklist.textContent = "Complete";
+            const checklist = document.createElement("button");
+            checklist.classList.add("checklist");
+            checklist.textContent = "Complete";
 
-        const description = document.createElement("div");
-        description.classList.add("description");
-        description.textContent = element.description;
+            const description = document.createElement("div");
+            description.classList.add("description");
+            description.textContent = element.description;
 
-        taskList.appendChild(title);
-        taskList.appendChild(dued);
-        taskList.appendChild(checklist);
-        taskList.appendChild(description);
+            taskList.appendChild(title);
+            taskList.appendChild(dued);
+            taskList.appendChild(checklist);
+            taskList.appendChild(description);
 
-        container.appendChild(taskList);
+            container.appendChild(taskList);
 
-        checklist.addEventListener("click", () => {
-            parentArray.removeList(index)
-            taskList.remove();
+            checklist.addEventListener("click", () => {
+                parentArray.removeList(index)
+                taskList.remove();
+            });
         });
-    });
-
+    }
 }

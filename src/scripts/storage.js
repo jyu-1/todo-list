@@ -1,17 +1,19 @@
 export const projects = [];
 
-export const Projects = (name) => {
-    let list = [];
+export const Projects = (name, list) => {
+    if (list === undefined){
+        list = [];
+    }
 
     const addList = (title, description, dueDate, priority) => {
         const newItem = List(title, description, dueDate, priority);
         list.push(newItem);
+        localStorage.setItem("projects", JSON.stringify(projects));
     };
 
     const removeList = (index) => {
-        console.log(list[index]);
         list.splice(index, 1);
-        console.log(list[index]);
+        localStorage.setItem("projects", JSON.stringify(projects));
     }
     return { name, list, addList, removeList };
 };
