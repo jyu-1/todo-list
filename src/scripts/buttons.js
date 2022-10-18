@@ -2,11 +2,18 @@ import { Projects, projects } from "./storage";
 import { listProjects, listTasks, selectNewProject, currentView } from './displayHandler';
 
 export function defaultPage() {
-    const savedData = JSON.parse(localStorage.getItem("projects"));
-    savedData.forEach((element) => {
-        const restoreProject = Projects(element.name, element.list);
-        projects.push(restoreProject);
-    })
+    if (!localStorage.getItem("projects")) {
+        console.log("empty");
+        localStorage.setItem("projects", "[]");
+    }
+    else {
+        const savedData = JSON.parse(localStorage.getItem("projects"));
+
+        savedData.forEach((element) => {
+            const restoreProject = Projects(element.name, element.list);
+            projects.push(restoreProject);
+        })
+    }
 
     listProjects(projects);
     selectNewProject(projects);
