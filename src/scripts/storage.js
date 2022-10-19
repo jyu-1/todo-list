@@ -1,7 +1,7 @@
 export const projects = [];
 
 export const Projects = (name, list) => {
-    if (list === undefined){
+    if (list === undefined) {
         list = [];
     }
 
@@ -14,7 +14,7 @@ export const Projects = (name, list) => {
     const removeList = (index) => {
         list.splice(index, 1);
         localStorage.setItem("projects", JSON.stringify(projects));
-    }
+    };
     return { name, list, addList, removeList };
 };
 

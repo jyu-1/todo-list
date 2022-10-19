@@ -1,18 +1,22 @@
 import { Projects, projects } from "./storage";
-import { listProjects, listTasks, selectNewProject, currentView } from './displayHandler';
+import {
+    listProjects,
+    listTasks,
+    selectNewProject,
+    currentView,
+} from "./displayHandler";
 
 export function defaultPage() {
     if (!localStorage.getItem("projects")) {
         console.log("empty");
         localStorage.setItem("projects", "[]");
-    }
-    else {
+    } else {
         const savedData = JSON.parse(localStorage.getItem("projects"));
 
         savedData.forEach((element) => {
             const restoreProject = Projects(element.name, element.list);
             projects.push(restoreProject);
-        })
+        });
     }
 
     listProjects(projects);
@@ -55,12 +59,12 @@ function addProject() {
                 form.remove();
                 addProject.style.display = "block";
             }
-        })
+        });
 
         cancel.addEventListener("click", () => {
             form.remove();
             addProject.style.display = "block";
-        })
+        });
 
         add.textContent = "Add";
         cancel.textContent = "Cancel";
@@ -94,7 +98,12 @@ function addTask() {
         if (taskTitle.reportValidity() === true) {
             event.preventDefault();
             modal.style.display = "none";
-            projects[currentView].addList(taskTitle.value, taskDescription.value, taskDate.value, taskPriority.value);
+            projects[currentView].addList(
+                taskTitle.value,
+                taskDescription.value,
+                taskDate.value,
+                taskPriority.value
+            );
             listTasks(projects[currentView].list, projects[currentView]);
             form.reset();
         }
@@ -112,5 +121,5 @@ function addTask() {
             form.reset();
             modal.style.display = "none";
         }
-    }
+    };
 }

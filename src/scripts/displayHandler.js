@@ -35,14 +35,13 @@ export function selectNewProject(array) {
     if (projects.length === 0) {
         container.textContent = "";
         addButton.disabled = true;
-    }
-    else {
+    } else {
         addButton.disabled = false;
         const allNav = document.querySelectorAll(".project-list");
         if (allNav[0] !== undefined) {
             allNav.forEach((element) => {
                 element.classList.remove("active");
-            })
+            });
             currentView = array.length - 1;
             allNav[currentView].classList.add("active");
         }
@@ -65,7 +64,7 @@ export function listTasks(array, parentArray) {
         localStorage.setItem("projects", JSON.stringify(projects));
         listProjects(projects);
         selectNewProject(projects);
-    })
+    });
 
     projectName.textContent = "Project: " + parentArray.name;
     projectDelete.textContent = "Delete Project";
@@ -121,7 +120,7 @@ export function listTasks(array, parentArray) {
             container.appendChild(taskList);
 
             checklist.addEventListener("click", () => {
-                parentArray.removeList(index)
+                parentArray.removeList(index);
                 taskList.remove();
             });
         });

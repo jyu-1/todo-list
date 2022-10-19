@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 /* Custom Properties */
 :root {
@@ -17,7 +17,7 @@
 /* Body Start */
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -230,7 +230,7 @@ main h1 {
     grid-template-rows: 1fr 2fr;
 }
 
-.task-list>* {
+.task-list > * {
     padding: 5px;
 }
 
@@ -263,7 +263,7 @@ main h1 {
     border-radius: 5px;
 }
 
-.task-list .checklist:hover{
+.task-list .checklist:hover {
     cursor: pointer;
     background-color: rgb(188, 188, 255);
 }
@@ -340,7 +340,7 @@ footer span {
     gap: 10px;
 }
 
-.task-form>* {
+.task-form > * {
     font-family: monospace;
     font-size: 13px;
     text-align: center;
@@ -363,24 +363,24 @@ footer span {
 @-webkit-keyframes animatetop {
     from {
         top: -300px;
-        opacity: 0
+        opacity: 0;
     }
 
     to {
         top: 0;
-        opacity: 1
+        opacity: 1;
     }
 }
 
 @keyframes animatetop {
     from {
         top: -300px;
-        opacity: 0
+        opacity: 0;
     }
 
     to {
         top: 0;
-        opacity: 1
+        opacity: 1;
     }
 }
 
